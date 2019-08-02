@@ -72,7 +72,12 @@ abstract class AbstractDaemon {
             die ( "This script can be run only in CLI Mode.\n\n" );
         }
 
-        declare( ticks=10 );
+        if ( version_compare( PHP_VERSION, '7.1.0' ) >= 0 ) {
+            pcntl_async_signals( true );
+        } else {
+            declare( ticks=10 );
+        }
+
         set_time_limit( 0 );
 
         if ( static::$__INSTANCE === null ) {
@@ -84,7 +89,6 @@ abstract class AbstractDaemon {
                 static::_TimeStampMsg( $msg );
             } else {
                 //static::_TimeStampMsg( str_pad( " Registering signal handlers ", 60, "*", STR_PAD_BOTH ) );
-
                 pcntl_signal( SIGTERM, [ get_called_class(), 'sigSwitch' ] );
                 pcntl_signal( SIGINT, [ get_called_class(), 'sigSwitch' ] );
                 pcntl_signal( SIGHUP, [ get_called_class(), 'sigSwitch' ] );

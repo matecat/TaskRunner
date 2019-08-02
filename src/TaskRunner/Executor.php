@@ -6,6 +6,7 @@
  * Time: 13.37
  *
  */
+
 namespace MateCat\TaskRunner;
 
 use MateCat\Commons\AMQHandler;
@@ -158,7 +159,12 @@ class Executor implements SplObserver {
             die ( "This script can be run only in CLI Mode.\n\n" );
         }
 
-        declare( ticks=10 );
+        if ( version_compare( PHP_VERSION, '7.1.0' ) >= 0 ) {
+            pcntl_async_signals( true );
+        } else {
+            declare( ticks=10 );
+        }
+
         set_time_limit( 0 );
 
         if ( !extension_loaded( "pcntl" ) && (bool)ini_get( "enable_dl" ) ) {
@@ -255,7 +261,7 @@ class Executor implements SplObserver {
                     $this->_worker = new $queueElement->classLoad( $this->_queueHandler );
 
                     if ( !$this->_worker instanceof AbstractWorker ) {
-                        throw new Exception( "Invalid worker class found. Executor expects classLoad to be an instance of AbstractWorker, " .  get_class( $this->_worker ) . " given." );
+                        throw new Exception( "Invalid worker class found. Executor expects classLoad to be an instance of AbstractWorker, " . get_class( $this->_worker ) . " given." );
                     }
 
                     $this->_worker->attach( $this );
