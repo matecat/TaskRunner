@@ -1,0 +1,42 @@
+{
+    "name": "matecat/taskrunner",
+    "description": "Asynchronous multi process task runner based on ActiveMQ.",
+    "version": "v1.0",
+    "keywords": [
+        "Asynchronous",
+        "Task Runner",
+        "ActiveMQ",
+        "RabbitMQ",
+        "Stomp"
+    ],
+    "homepage": "https://github.com/MateCat/TaskRunner",
+    "type": "library",
+    "license": "LGPL-3.0-only / LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Domenico Lupinetti",
+            "email": "ostico@gmail.com",
+            "homepage": "https://www.linkedin.com/in/domenicolupinetti",
+            "role": "Owner, Developer"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "psr/log": "^1.1.0",
+        "monolog/monolog": "^1.24.0",
+        "ext-stomp": "^2.0.2",
+        "ext-redis": "^5.0.2",
+        "ext-pcntl": ">=7.2",
+        "ext-posix": ">=7.2",
+        "ext-json": "*",
+        "ext-pdo": "*",
+        "ext-curl": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.2.5",
+        "php-coveralls/php-coveralls": "^2.1.0"
+    },
+    "autoload": {
+        "psr-4": {"MateCat\\": "src"}
+    }
+}

@@ -1,0 +1,28 @@
+# IDE stuffs
+.settings
+.directory
+.idea
+.project
+.DS_Store
+
+# Configuration files
+inc/*.dat
+inc/Error_Mail_List.ini
+inc/config.ini
+inc/config.test.ini
+inc/config.development.ini
+local_storage
+storage
+
+# Development env config files
+.agignore
+.vagrant
+
+task_manager_config.ini
+
+# advised local folder for test files
+test_storage
+
+# composer files
+composer.phar
+vendor
