@@ -1,5 +1,5 @@
 {
-    "name": "matecat/taskrunner",
+    "name": "ostico/taskrunner",
     "description": "Asynchronous multi process task runner based on ActiveMQ.",
     "version": "v1.0",
     "keywords": [
