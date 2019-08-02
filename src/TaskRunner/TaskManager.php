@@ -221,6 +221,7 @@ class TaskManager extends AbstractDaemon {
 
         //avoid zombies : parent process knows the death of one of the children
         $dead = pcntl_waitpid( -1, $status, WNOHANG | WUNTRACED );
+//        self::_TimeStampMsg( "End wait, found " . $dead . " death children" );
         while ( $dead > 0 ) {
 
             self::_TimeStampMsg( "(parent " . self::$tHandlerPID . ") : child $dead exited: deleting file ...." );
@@ -288,7 +289,7 @@ class TaskManager extends AbstractDaemon {
             } else {
 
                 // child process runs from here
-                pcntl_exec( INIT::$PHP_EXECUTABLE, [ __DIR__ . DIRECTORY_SEPARATOR . "Executor.php", json_encode( $context ) ] );
+                pcntl_exec( INIT::$PHP_EXECUTABLE, [ __DIR__ . DIRECTORY_SEPARATOR . "Executor.php", json_encode( $context ) ], [ 'rootPath' => INIT::$ROOT ] );
                 posix_kill( posix_getpid(), SIGINT ); //this line of code will never be executed
                 exit;
 

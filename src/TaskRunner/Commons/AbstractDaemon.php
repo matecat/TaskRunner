@@ -72,7 +72,7 @@ abstract class AbstractDaemon {
             die ( "This script can be run only in CLI Mode.\n\n" );
         }
 
-        declare( ticks = 10 );
+        declare( ticks=10 );
         set_time_limit( 0 );
 
         if ( static::$__INSTANCE === null ) {
@@ -85,14 +85,14 @@ abstract class AbstractDaemon {
             } else {
                 //static::_TimeStampMsg( str_pad( " Registering signal handlers ", 60, "*", STR_PAD_BOTH ) );
 
-                pcntl_signal( SIGTERM, array( get_called_class(), 'sigSwitch' ) );
-                pcntl_signal( SIGINT, array( get_called_class(), 'sigSwitch' ) );
-                pcntl_signal( SIGHUP, array( get_called_class(), 'sigSwitch' ) );
+                pcntl_signal( SIGTERM, [ get_called_class(), 'sigSwitch' ] );
+                pcntl_signal( SIGINT, [ get_called_class(), 'sigSwitch' ] );
+                pcntl_signal( SIGHUP, [ get_called_class(), 'sigSwitch' ] );
                 $msg = str_pad( " Signal Handler Installed ", 60, "-", STR_PAD_BOTH );
 
                 //static::_TimeStampMsg( "$msg" );
             }
-            static::$__INSTANCE = new static(  $config_file, $queueIndex );
+            static::$__INSTANCE = new static( $config_file, $queueIndex );
         }
 
         return static::$__INSTANCE;
@@ -124,7 +124,9 @@ abstract class AbstractDaemon {
      * @param $msg
      */
     protected static function _TimeStampMsg( $msg ) {
-        if ( INIT::$DEBUG ) echo "[" . date( DATE_RFC822 ) . "] " . $msg . "\n";
+        if ( INIT::$DEBUG ) {
+            echo "[" . date( DATE_RFC822 ) . "] " . $msg . "\n";
+        }
         Log::doJsonLog( $msg );
     }
 

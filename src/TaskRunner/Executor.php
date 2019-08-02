@@ -30,8 +30,8 @@ use SplSubject;
 use StompException;
 use StompFrame;
 
-include_once realpath( dirname( __FILE__ ) . '/../../' ) . "/vendor/autoload.php";
-Bootstrap::start();
+include_once realpath( getenv( 'rootPath' ) . "/vendor/autoload.php" );
+Bootstrap::start( getenv( 'rootPath' ) );
 
 /**
  * Class Executor

@@ -17,13 +17,17 @@ class Bootstrap {
     protected static $CONFIG;
     protected static $_ROOT;
 
-    public static function start() {
-        new self();
+    public static function start( $configPath = null ) {
+        new self( $configPath );
     }
 
-    private function __construct() {
+    private function __construct( $rootPath = null ) {
 
-        self::$_ROOT        = realpath( dirname( __FILE__ ) . '/../../' );
+        if( empty( $rootPath ) ){
+            $rootPath = realpath( dirname( __FILE__ ) . '/../../../../../' );
+        }
+
+        self::$_ROOT        = $rootPath;
         self::$CONFIG       = parse_ini_file( self::$_ROOT . DIRECTORY_SEPARATOR . 'inc/config.ini', true );
         self::$_INI_VERSION = parse_ini_file( self::$_ROOT . DIRECTORY_SEPARATOR . 'inc/version.ini' )['version'];
 
