@@ -1,5 +1,5 @@
 <?php
-namespace MateCat\Config;
+namespace MateCat\TaskRunner\Config;
 
 use Exception;
 use MateCat\Commons\Log;
@@ -191,7 +191,7 @@ class Bootstrap {
         $env = self::getEnvConfig();
 
         foreach( $env as $KEY => $value ){
-            if ( property_exists( 'MateCat\Config\INIT', $KEY ) ) {
+            if ( property_exists( 'MateCat\TaskRunner\Config\INIT', $KEY ) ) {
                 INIT::${$KEY} = $value;
             }
         }

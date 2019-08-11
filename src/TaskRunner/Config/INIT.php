@@ -1,11 +1,11 @@
 <?php
 
-namespace MateCat\Config;
+namespace MateCat\TaskRunner\Config;
 
 class INIT {
 
 
-    public const MATECAT_USER_AGENT = "MateCat/v";
+    const MATECAT_USER_AGENT = "MateCat/v";
 
     /**
      * @var $ENV

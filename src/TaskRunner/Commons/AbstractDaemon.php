@@ -10,7 +10,7 @@
 namespace MateCat\TaskRunner\Commons;
 
 use MateCat\Commons\Log;
-use MateCat\Config\INIT;
+use MateCat\TaskRunner\Config\INIT;
 
 /**
  * The abstract Daemon definition.

@@ -11,7 +11,7 @@ namespace MateCat\TaskRunner;
 
 use MateCat\Commons\AMQHandler;
 use MateCat\Commons\Log;
-use MateCat\Config\INIT;
+use MateCat\TaskRunner\Config\INIT;
 use MateCat\TaskRunner\Commons\AbstractDaemon;
 use MateCat\TaskRunner\Commons\Context;
 use MateCat\TaskRunner\Commons\ContextList;

@@ -2,7 +2,7 @@
 
 namespace MateCat\Commons;
 
-use MateCat\Config\INIT;
+use MateCat\TaskRunner\Config\INIT;
 use Redis;
 use RedisException;
 

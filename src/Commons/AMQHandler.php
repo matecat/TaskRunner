@@ -9,7 +9,7 @@
 
 namespace MateCat\Commons;
 
-use MateCat\Config\INIT;
+use MateCat\TaskRunner\Config\INIT;
 use Exception;
 use MateCat\TaskRunner\Commons\RedisKeys;
 use MateCat\TaskRunner\Commons\Context;

@@ -2,7 +2,7 @@
 
 namespace MateCat\Commons;
 
-use MateCat\Config\INIT;
+use MateCat\TaskRunner\Config\INIT;
 use Exception;
 use Monolog\Formatter\LineFormatter;
 use Monolog\Handler\StreamHandler;
@@ -196,14 +196,6 @@ class Log {
 
         return null;
 
-    }
-
-    /**
-     * Ugly workaround to reset the logger, so the method getLogger re-initialize the logger configuration
-     *
-     */
-    public static function resetLogger() {
-        self::$logger = null;
     }
 
     public static function getRequestID() {
