@@ -24,15 +24,15 @@ class Bootstrap {
     private function __construct( $rootPath = null ) {
 
         if( empty( $rootPath ) ){
-            $rootPath = realpath( dirname( __FILE__ ) . '/../../../../../' );
+            $rootPath = realpath( dirname( __FILE__ ) . '/../../../' );
         }
 
         self::$_ROOT        = $rootPath;
         self::$CONFIG       = parse_ini_file( self::$_ROOT . DIRECTORY_SEPARATOR . 'inc/config.ini', true );
         self::$_INI_VERSION = parse_ini_file( self::$_ROOT . DIRECTORY_SEPARATOR . 'inc/version.ini' )['version'];
 
-        register_shutdown_function( [ 'MateCat\Config\Bootstrap', 'shutdownFunctionHandler' ] );
-        set_exception_handler( [ 'MateCat\Config\Bootstrap', 'exceptionHandler' ] );
+        register_shutdown_function( [ 'MateCat\TaskRunner\Config\Bootstrap', 'shutdownFunctionHandler' ] );
+        set_exception_handler( [ 'MateCat\TaskRunner\Config\Bootstrap', 'exceptionHandler' ] );
 
         // Overridable defaults
         INIT::$ROOT                           = self::$_ROOT; // Accessible by Apache/PHP

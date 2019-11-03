@@ -31,8 +31,9 @@ use SplSubject;
 use StompException;
 use StompFrame;
 
-include_once realpath( getenv( 'rootPath' ) . "/vendor/autoload.php" );
-Bootstrap::start( getenv( 'rootPath' ) );
+/** @noinspection PhpIncludeInspection */
+require_once realpath( "../../vendor/autoload.php" );
+Bootstrap::start();
 
 /**
  * Class Executor
