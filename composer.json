@@ -10,7 +10,7 @@
     ],
     "homepage": "https://github.com/MateCat/TaskRunner",
     "type": "library",
-    "license": "LGPL-3.0-only / LGPL-3.0-or-later",
+    "license": "LGPL-3.0-or-later",
     "authors": [
         {
             "name": "Domenico Lupinetti",
